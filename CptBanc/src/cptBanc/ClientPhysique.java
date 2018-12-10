@@ -1,21 +1,42 @@
 package cptBanc;
 
+import java.time.*;
+
 public class ClientPhysique extends Client
 {
-	private ClientPhysique tuteur;
+	protected ClientPhysiqueAdulte tuteur;
+	protected LocalDate dateNaissance;
+	protected ClientPhysique successor;
 	
-	public ClientPhysique(String nm, String ad, String ml, String tl, ClientPhysique tut)
+	public ClientPhysique(String nm, String ad, String ml, String tl, ClientPhysiqueAdulte tut, LocalDate dateNaissance)
 	{
 		super(nm, ad, ml, tl);
 		setTuteur(tut);
+		setDateNaissance(dateNaissance);
+		successor = new ClientPhysiqueEnfant(nom, adresse, mail, tel, tuteur, dateNaissance);
 	}
 	
-	public ClientPhysique getTuteur()
+	ClientPhysique getSuccessor()
+	{
+		return this.successor;
+	}
+	
+	public ClientPhysiqueAdulte getTuteur()
 	{
 		return tuteur;
 	}
+	
+	public LocalDate getDateNaissance()
+	{
+		return this.dateNaissance;
+	}
+	
+	public void setDateNaissance(LocalDate date)
+	{
+		this.dateNaissance = date;
+	}
 
-	public void setTuteur(ClientPhysique tuteur)
+	public void setTuteur(ClientPhysiqueAdulte tuteur)
 	{
 		this.tuteur = tuteur;
 	}

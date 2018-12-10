@@ -1,11 +1,17 @@
 package cptBanc;
 
+import java.util.ArrayList;
+
 public abstract class Client
 {
-	private String nom;
-	private String adresse;
-	private String mail;
-	private String tel;
+	private static int cptClient = 0;
+	
+	protected String nom;
+	protected String adresse;
+	protected String mail;
+	protected String tel;
+	protected int clientID;
+	protected ArrayList<Compte> arrayComptes;	
 	
 	public Client(String nm, String ad, String ml, String tl)
 	{
@@ -13,6 +19,9 @@ public abstract class Client
 		adresse = ad;
 		mail = ml;
 		tel = tl;
+		clientID = cptClient;
+		
+		cptClient++;
 	}
 	
 	public String getNom()
@@ -53,6 +62,11 @@ public abstract class Client
 	public void setTel(String tel)
 	{
 		this.tel = tel;
+	}
+	
+	public int getClientID()
+	{
+		return clientID;
 	}
 
 	public abstract void ouvrirCompte();
