@@ -1,5 +1,7 @@
 package cptBanc;
 
+import java.util.ArrayList;
+
 public class Compte
 {
 	private static int cptCompte = 0;
@@ -9,6 +11,8 @@ public class Compte
 	private double montantRetraitMax;
 	private double decouvertAutorise;
 	
+	ArrayList<OperationCompte> operationArray;
+	
 	public Compte()
 	{
 		numCompte = cptCompte;
@@ -16,6 +20,7 @@ public class Compte
 		montantRetraitMax = 200;
 		decouvertAutorise = 100;
 		
+		operationArray = new ArrayList<OperationCompte>();
 		cptCompte++;
 	}
 	

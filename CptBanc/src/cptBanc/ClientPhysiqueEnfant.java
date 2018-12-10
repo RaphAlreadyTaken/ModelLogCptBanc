@@ -9,7 +9,6 @@ public class ClientPhysiqueEnfant extends ClientPhysique
 	{
 		super(nm, ad, ml, tl, tut, dateNaissance);
 		successor = new ClientPhysiqueAdo(nom, adresse, mail, tel, tuteur, dateNaissance);
-
 	}
 	
 	public void retirerArgent(Double montant, Compte cpte)
