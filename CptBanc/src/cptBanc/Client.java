@@ -86,10 +86,6 @@ public abstract class Client
 		cpte.ajouterArgent(new Depot(montant));
 		this.etat = montant + "€ ont étés ajoutés sur le compte.";
 	}
+	
 	public abstract void retirerArgent(Double montant, Compte cpte);
-	
-	public abstract void ouvrirCompte();
-	public abstract void fermerCompte();
-	public abstract void consulterSolde(Compte cpte);
-	
 }
