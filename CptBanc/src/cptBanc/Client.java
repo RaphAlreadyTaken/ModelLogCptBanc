@@ -88,4 +88,10 @@ public abstract class Client
 	}
 	
 	public abstract void retirerArgent(Double montant, Compte cpte);
+	
+	public void effectuerPaiement(Compte cpte, Pays country, Double montant)
+	{
+		Paiement pmnt = new Paiement(montant, country, cpte);
+		pmnt.getState().makePayment(pmnt);
+	}
 }

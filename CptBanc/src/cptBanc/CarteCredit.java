@@ -8,4 +8,10 @@ public class CarteCredit extends Carte
 		super(typeReseau);		
 	}
 
+	@Override
+	public void debiterCompte(Paiement pmnt) 
+	{
+
+	}
+
 }

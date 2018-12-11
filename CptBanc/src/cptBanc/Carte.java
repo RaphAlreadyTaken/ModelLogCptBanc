@@ -8,4 +8,12 @@ public abstract class Carte
 	{
 		this.typeReseau = typeReseau;
 	}
+
+	public Reseau getTypeReseau() 
+	{
+		return typeReseau;
+	}
+
+	public abstract void debiterCompte(Paiement pmnt);
+	
 }

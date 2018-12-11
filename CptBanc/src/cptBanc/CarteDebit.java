@@ -26,4 +26,10 @@ public class CarteDebit extends Carte
 		this.plafond = plafond;
 	}
 
+	@Override
+	public void debiterCompte(Paiement pmnt) 
+	{
+		pmnt.getCpte().effectuerPaiement(pmnt);
+	}
+
 }

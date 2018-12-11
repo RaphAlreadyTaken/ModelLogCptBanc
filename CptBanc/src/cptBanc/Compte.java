@@ -10,6 +10,7 @@ public class Compte
 	private double solde;
 	private double montantRetraitMax;
 	private double decouvertAutorise;
+	private Carte cartePaiement;
 	
 	ArrayList<OperationCompte> operationArray;
 	
@@ -19,6 +20,7 @@ public class Compte
 		solde = 0;
 		montantRetraitMax = 200;
 		decouvertAutorise = 100;
+		setCartePaiement(null);
 		
 		operationArray = new ArrayList<OperationCompte>();
 		cptCompte++;
@@ -75,13 +77,28 @@ public class Compte
 	{
 		double newSolde = this.solde - op.getMontant();
 		
-		if(newSolde < this.decouvertAutorise)
+		if(newSolde > 0 - this.decouvertAutorise)
 		{
 			operationArray.add(op);
 			this.solde -= op.getMontant();
 			return true;
 		}
 		return false;
+	}
+	
+	public void effectuerPaiement(Paiement pmnt)
+	{
+		operationArray.add(pmnt);
+		this.solde -= pmnt.getMontant();
+	}
+
+	public Carte getCartePaiement() 
+	{
+		return cartePaiement;
+	}
+	public void setCartePaiement(Carte cartePaiement) 
+	{
+		this.cartePaiement = cartePaiement;
 	}
 	
 }
