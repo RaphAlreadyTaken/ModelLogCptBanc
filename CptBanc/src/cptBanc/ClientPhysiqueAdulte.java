@@ -13,7 +13,14 @@ public class ClientPhysiqueAdulte extends ClientPhysique
 	
 	public void retirerArgent(Double montant, Compte cpte)
 	{
-		//Do stuff
+		if(cpte.retirerArgent(new Retrait(montant)))
+		{
+			this.etat = montant + "€ ont étés retirés du compte."; 
+		}
+		else
+		{
+			this.etat = "Impossible de retirer cette somme: decouvert maximum atteint."; 
+		}
 	}
 
 }

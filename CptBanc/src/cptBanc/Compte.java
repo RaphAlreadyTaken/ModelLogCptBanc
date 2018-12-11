@@ -65,4 +65,23 @@ public class Compte
 		this.decouvertAutorise = decouvertAutorise;
 	}
 	
+	public void ajouterArgent(OperationCompte op)
+	{
+		operationArray.add(op);
+		this.solde += op.getMontant();
+	}
+	
+	public Boolean retirerArgent(OperationCompte op)
+	{
+		double newSolde = this.solde - op.getMontant();
+		
+		if(newSolde < this.decouvertAutorise)
+		{
+			operationArray.add(op);
+			this.solde -= op.getMontant();
+			return true;
+		}
+		return false;
+	}
+	
 }

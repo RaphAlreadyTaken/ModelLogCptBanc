@@ -50,15 +50,10 @@ public class ClientPhysique extends Client
 	{	
 		
 	}
-	
-	public void deposerArgent(Double montant, Compte cpte)
-	{
-			
-	}
 
 	public void retirerArgent(Double montant, Compte cpte)
-	{	
-		
+	{
+		successor.retirerArgent(montant, cpte);
 	}
 	
 	public void consulterSolde(Compte cpte)

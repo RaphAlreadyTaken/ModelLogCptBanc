@@ -11,7 +11,8 @@ public abstract class Client
 	protected String mail;
 	protected String tel;
 	protected int clientID;
-	protected ArrayList<Compte> arrayComptes;	
+	protected ArrayList<Compte> arrayComptes;
+	protected String etat;
 	
 	public Client(String nm, String ad, String ml, String tl)
 	{
@@ -68,11 +69,16 @@ public abstract class Client
 	{
 		return clientID;
 	}
-
+	
+	public  void deposerArgent(Double montant, Compte cpte)
+	{
+		cpte.ajouterArgent(new Depot(montant));
+		this.etat = montant + "€ ont étés ajoutés sur le compte.";
+	}
+	public abstract void retirerArgent(Double montant, Compte cpte);
+	
 	public abstract void ouvrirCompte();
 	public abstract void fermerCompte();
-	public abstract void deposerArgent(Double montant, Compte cpte);
-	public abstract void retirerArgent(Double montant, Compte cpte);
 	public abstract void consulterSolde(Compte cpte);
 	
 }

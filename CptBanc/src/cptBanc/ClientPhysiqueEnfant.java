@@ -4,7 +4,6 @@ import java.time.*;
 
 public class ClientPhysiqueEnfant extends ClientPhysique 
 {
-
 	public ClientPhysiqueEnfant(String nm, String ad, String ml, String tl, ClientPhysiqueAdulte tut, LocalDate dateNaissance) 
 	{
 		super(nm, ad, ml, tl, tut, dateNaissance);
@@ -18,7 +17,7 @@ public class ClientPhysiqueEnfant extends ClientPhysique
 		
 		if(diff.getYears() < 10) //Si le client a moins de 10 ans
 		{
-			//do stuff
+			this.etat = "Seul votre tuteur peut retirer de l'argent.";
 		}
 		else
 		{
