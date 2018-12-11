@@ -8,21 +8,29 @@ public class Banque
 	private String adresse;
 	private String siret;
 	private ArrayList<Client> clients;
+	private Compte baseAccount;
 	
 	public Banque(String nm, String ad, String sir, ArrayList<Client> clts)
 	{
 		nom = nm;
 		adresse = ad;
 		siret = sir;
+		baseAccount = new Compte();
 		setClients(clts);
 	}
 	
 	public void creerCompte(Client clt)
 	{
+		clt.ajouterCompte(baseAccount.clone());
 	}
 	
-	public void supprCompte(Client clt)
+	public Boolean supprCompte(Client clt, Compte cpte)
 	{
+		if(clt.getArrayComptes().remove(cpte))
+		{
+			return true;		
+		}
+		return false;
 	}
 
 	public String getNom()

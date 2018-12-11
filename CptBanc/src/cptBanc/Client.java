@@ -12,6 +12,7 @@ public abstract class Client
 	protected String tel;
 	protected int clientID;
 	protected ArrayList<Compte> arrayComptes;
+
 	protected String etat;
 	
 	public Client(String nm, String ad, String ml, String tl)
@@ -29,7 +30,6 @@ public abstract class Client
 	{
 		return nom;
 	}
-
 	public void setNom(String nom)
 	{
 		this.nom = nom;
@@ -39,7 +39,6 @@ public abstract class Client
 	{
 		return adresse;
 	}
-
 	public void setAdresse(String adresse)
 	{
 		this.adresse = adresse;
@@ -49,7 +48,6 @@ public abstract class Client
 	{
 		return mail;
 	}
-
 	public void setMail(String mail)
 	{
 		this.mail = mail;
@@ -59,7 +57,6 @@ public abstract class Client
 	{
 		return tel;
 	}
-
 	public void setTel(String tel)
 	{
 		this.tel = tel;
@@ -68,6 +65,20 @@ public abstract class Client
 	public int getClientID()
 	{
 		return clientID;
+	}
+	
+	public ArrayList<Compte> getArrayComptes()
+	{
+		return arrayComptes;
+	}
+	public void setArrayComptes(ArrayList<Compte> arrayComptes) 
+	{
+		this.arrayComptes = arrayComptes;
+	}
+	
+	public void ajouterCompte(Compte cpte)
+	{
+		arrayComptes.add(cpte);
 	}
 	
 	public  void deposerArgent(Double montant, Compte cpte)
