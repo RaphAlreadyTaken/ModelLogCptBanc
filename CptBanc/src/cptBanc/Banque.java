@@ -1,5 +1,6 @@
 package cptBanc;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Banque
@@ -38,7 +39,6 @@ public class Banque
 	{
 		return nom;
 	}
-
 	public void setNom(String nom)
 	{
 		this.nom = nom;
@@ -49,7 +49,6 @@ public class Banque
 	{
 		return adresse;
 	}
-
 	public void setAdresse(String adresse)
 	{
 		this.adresse = adresse;
@@ -60,18 +59,16 @@ public class Banque
 	{
 		return siret;
 	}
-
 	public void setSiret(String siret)
 	{
 		this.siret = siret;
 		notifyObserver();
 	}
-
+	
 	public ArrayList<Client> getClients()
 	{
 		return clients;
 	}
-
 	public void setClients(ArrayList<Client> clients)
 	{
 		this.clients = clients;
@@ -80,5 +77,18 @@ public class Banque
 	public void notifyObserver()
 	{
 		obsB.update();
+	
+	Client creerClientMoral(String nm, String ad, String ml, String tl, String siret, ClientPhysique grt)
+	{
+		Client clt = FactoryClientMoral.getInstance().createClient(nm, ad, ml, tl, siret, grt);
+		clients.add(clt);		
+		return clt;
+	}	
+	
+	Client creerClientPhysique(String nm, String ad, String ml, String tl, ClientPhysiqueAdulte tut, LocalDate dateNaissance)
+	{
+		Client clt = FactoryClientPhysique.getInstance().createClient(nm, ad, ml, tl, tut, dateNaissance);
+		clients.add(clt);
+		return clt;
 	}
 }

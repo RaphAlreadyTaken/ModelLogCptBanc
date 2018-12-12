@@ -1,7 +1,7 @@
 package cptBanc;
 
-public class StatePaiementRefuse extends StatePaiement {
-
+public class StatePaiementEnCours extends StatePaiement
+{
 	@Override
 	public void makePayment(Paiement pmnt, Carte cartePaiement) 
 	{

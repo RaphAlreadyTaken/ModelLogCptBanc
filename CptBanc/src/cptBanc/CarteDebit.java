@@ -4,15 +4,15 @@ public class CarteDebit extends Carte
 {
 	private double plafond;
 	
-	public CarteDebit(Reseau typeReseau, double plafond) 
+	public CarteDebit(Reseau typeReseau, Compte account, double plafond) 
 	{
-		super(typeReseau);		
+		super(typeReseau, account);		
 		this.setPlafond(plafond);
 	}
 	
-	public CarteDebit(Reseau typeReseau) 
+	public CarteDebit(Reseau typeReseau, Compte account) 
 	{
-		super(typeReseau);		
+		super(typeReseau, account);		
 		this.setPlafond(200);
 	}
 
@@ -27,9 +27,24 @@ public class CarteDebit extends Carte
 	}
 
 	@Override
-	public void debiterCompte(Paiement pmnt) 
+	public Boolean modalitePaiement(Paiement pmnt) 
 	{
-		pmnt.getCpte().effectuerPaiement(pmnt);
+		double newSolde = this.getAccount().getSolde() - pmnt.getMontant();
+
+		//On vérifie que le paiement est faisable en fonction du découvert autorisé
+		if(newSolde > 0 - this.getAccount().getDecouvertAutorise())
+		{
+			return true;
+		}	
+		return false;
+	}
+
+	@Override
+	public void debiterCompte(Paiement pmnt) 
+	{		
+		pmnt.setState(new StatePaiementTermine());
+		this.getAccount().setSolde(this.getAccount().getSolde() - pmnt.getMontant());
+		this.getAccount().ajouterOperation(pmnt);
 	}
 
 }

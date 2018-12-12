@@ -14,7 +14,7 @@ public class Compte
 	private ObserverCompte obsC;
 	
 	ArrayList<OperationCompte> operationArray;
-	
+
 	public Compte()
 	{
 		numCompte = cptCompte;
@@ -53,7 +53,6 @@ public class Compte
 	{
 		return montantRetraitMax;
 	}
-
 	public void setMontantRetraitMax(double montantRetraitMax) 
 	{
 		this.montantRetraitMax = montantRetraitMax;
@@ -64,16 +63,30 @@ public class Compte
 	{
 		return decouvertAutorise;
 	}
-
 	public void setDecouvertAutorise(double decouvertAutorise)
 	{
 		this.decouvertAutorise = decouvertAutorise;
 		notifyObserver();
 	}
 	
+	public Carte getCartePaiement() 
+	{
+		return cartePaiement;
+	}
+	public void setCartePaiement(Carte cartePaiement) 
+	{
+		this.cartePaiement = cartePaiement;
+	}
+		
+	public ArrayList<OperationCompte> getOperationArray() 
+	{
+		return operationArray;
+	}
+	
+		
 	public void ajouterArgent(OperationCompte op)
 	{
-		operationArray.add(op);
+		ajouterOperation(op);
 		this.solde += op.getMontant();
 	}
 	
@@ -83,7 +96,7 @@ public class Compte
 		
 		if(newSolde > 0 - this.decouvertAutorise)
 		{
-			operationArray.add(op);
+			ajouterOperation(op);
 			this.solde -= op.getMontant();
 			return true;
 		}
@@ -92,13 +105,7 @@ public class Compte
 	
 	public void effectuerPaiement(Paiement pmnt)
 	{
-		operationArray.add(pmnt);
-		this.solde -= pmnt.getMontant();
-	}
-
-	public Carte getCartePaiement() 
-	{
-		return cartePaiement;
+		this.getCartePaiement().debiterCompte(pmnt);
 	}
 	
 	public void setCartePaiement(Carte cartePaiement) 
@@ -110,5 +117,23 @@ public class Compte
 	public void notifyObserver()
 	{
 		obsC.update();
+	public void ajouterOperation(OperationCompte op)
+	{
+		operationArray.add(op);
+	}
+	
+	public void terminerToutesOperation()
+	{	
+		for(OperationCompte op : this.getOperationArray())
+		{
+			if(op.getClass().getSimpleName() == "Paiement")
+			{
+				if((((Paiement) op).getState().getClass().getSimpleName()) == "StatePaiementEnCours")
+				{
+					this.solde -= op.getMontant();
+					((Paiement) op).setState(new StatePaiementTermine());
+				}
+			}
+		}
 	}
 }
