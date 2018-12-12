@@ -110,6 +110,27 @@ public abstract class Client
 		pmnt.getState().makePayment(pmnt, cpte.getCartePaiement());
 	}
 	
+	public void contesterPaiement(Paiement pmnt, Compte cpte)
+	{
+		if(cpte.getOperationArray().contains(pmnt))
+		{
+			if(pmnt.getState().getClass().getSimpleName() == "StatePaiementEnCours")
+			{
+				pmnt.setState(new StatePaiementTermine());
+			}
+			else
+			{
+				double coutTauxRemb = cpte.getCartePaiement().getTypeReseau().getTauxRembours(pmnt);
+				if(coutTauxRemb < 1)
+				{
+					coutTauxRemb = 1 - coutTauxRemb;
+				}
+				double remb = pmnt.getMontant() * coutTauxRemb;
+				cpte.setSolde(cpte.getSolde() + remb);
+			}
+		}
+	}
+	
 	public double consulterSolde(Compte cpte)
 	{
 		return cpte.getSolde();

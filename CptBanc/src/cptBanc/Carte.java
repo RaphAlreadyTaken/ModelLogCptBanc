@@ -27,6 +27,12 @@ public abstract class Carte
 	{
 		return typeReseau;
 	}
+	
+	public double getSommeRemboursement(Paiement pmnt)
+	{
+		return 0;
+	}
+	
 
 	public abstract Boolean modalitePaiement(Paiement pmnt);
 	public abstract void debiterCompte(Paiement pmnt);

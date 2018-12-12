@@ -3,7 +3,7 @@ package cptBanc;
 public abstract class Reseau 
 {
 	protected double cout;
-	private double tauxRembours;
+	protected double tauxRembours;
 	private ObserverReseau obsR = new ObserverReseau(this);
 	
 	public double getCout() 
@@ -17,6 +17,11 @@ public abstract class Reseau
 	}
 	
 	public double getTauxRembours() 
+	{
+		return tauxRembours;
+	}
+	
+	public double getTauxRembours(Paiement pmnt) 
 	{
 		return tauxRembours;
 	}

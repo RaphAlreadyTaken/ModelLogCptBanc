@@ -27,5 +27,14 @@ public class ReseauVisa extends Reseau
 	{
 		this.tauxHash = tauxHash;
 	}
+	
+	public double getTauxRembours(Paiement pmnt) 
+	{
+		if(this.getTauxHash().containsKey(pmnt.getLieu()))
+		{
+			return this.getTauxHash().get(pmnt.getLieu());
+		}
+		return tauxRembours;
+	}
 
 } 
