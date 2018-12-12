@@ -1,6 +1,7 @@
 package cptBanc;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Compte
 {
@@ -12,6 +13,8 @@ public class Compte
 	private double decouvertAutorise;
 	private Carte cartePaiement;
 	private ObserverCompte obsC = new ObserverCompte(this);
+	private HashMap <Integer, Memento> sauvegardes;
+	private int nbSaves;
 	
 	ArrayList<OperationCompte> operationArray;
 	
@@ -22,8 +25,10 @@ public class Compte
 		montantRetraitMax = 200;
 		decouvertAutorise = 100;
 		cartePaiement = null;
+		nbSaves = 0;
 		
 		operationArray = new ArrayList<OperationCompte>();
+		sauvegardes = new HashMap<Integer, Memento>();
 		cptCompte++;
 	}
 	
@@ -84,6 +89,7 @@ public class Compte
 	{
 		ajouterOperation(op);
 		setSolde(this.solde + op.getMontant());
+		ajouterSauvegarde();
 	}
 	
 	public Boolean retirerArgent(OperationCompte op)
@@ -94,6 +100,7 @@ public class Compte
 		{
 			ajouterOperation(op);
 			setSolde(this.solde - op.getMontant());
+			ajouterSauvegarde();
 			return true;
 		}
 		return false;
@@ -102,6 +109,7 @@ public class Compte
 	public void effectuerPaiement(Paiement pmnt)
 	{
 		this.getCartePaiement().debiterCompte(pmnt);
+		ajouterSauvegarde();
 	}
 	
 	public void setCartePaiement(Carte cartePaiement) 
@@ -134,4 +142,23 @@ public class Compte
 			}
 		}
 	}
+	
+	public void ajouterSauvegarde()
+	{
+		this.sauvegardes.put(nbSaves, new Memento(operationArray));
+		nbSaves++;
+	}
+	
+	public void restaurerSauvegarde(int numSave)
+	{
+		for(OperationCompte op : operationArray)
+		{
+			if(sauvegardes.get(numSave).getEtat().contains(op) == false)
+			{
+				op.annulerOperation(this.solde);
+			}
+		}		
+		operationArray = sauvegardes.get(numSave).getEtat();
+	}
+	
 }

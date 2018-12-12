@@ -6,4 +6,11 @@ public class Depot extends OperationCompte
 	{
 		super(montant);
 	}
+
+	@Override
+	public double annulerOperation(double solde)
+	{
+		double nouveauSolde = solde - montant;
+		return nouveauSolde;
+	}
 }

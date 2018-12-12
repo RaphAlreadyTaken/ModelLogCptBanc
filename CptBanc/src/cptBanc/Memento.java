@@ -1,23 +1,19 @@
 package cptBanc;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Memento
 {
-	private HashMap<String, Double> etat;
+	private ArrayList<OperationCompte> etat;
 	
-	public Memento()
+	public Memento(ArrayList<OperationCompte> state)
 	{
-		etat = new HashMap<String, Double>();
+		etat = state;
 	}
 	
-	void sauverEtat()
+	public ArrayList<OperationCompte> getEtat() 
 	{
-		
+		return etat;
 	}
-	
-	void restaurerEtat()
-	{
-		
-	}
+
 }
