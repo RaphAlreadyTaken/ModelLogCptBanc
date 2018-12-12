@@ -32,17 +32,6 @@ public class ClientMoral extends Client
 		this.siret = siret;
 	}
 	
-	public void ouvrirCompte()
-	{	
-		
-	}
-	
-	public void fermerCompte()
-	{	
-		
-	}
-	
-	
 	public void retirerArgent(Double montant, Compte cpte)
 	{	
 		if(cpte.retirerArgent(new Retrait(montant)))

@@ -22,5 +22,4 @@ public class ClientPhysiqueAdulte extends ClientPhysique
 			this.etat = "Impossible de retirer cette somme: decouvert maximum atteint."; 
 		}
 	}
-
 }

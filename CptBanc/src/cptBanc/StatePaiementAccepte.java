@@ -7,6 +7,4 @@ public class StatePaiementAccepte extends StatePaiement
 	{		
 		cartePaiement.getAccount().effectuerPaiement(pmnt);
 	}
-	
-	//appeler methode executer paiement
 }

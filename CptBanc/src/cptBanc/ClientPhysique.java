@@ -41,16 +41,6 @@ public class ClientPhysique extends Client
 		this.tuteur = tuteur;
 	}
 
-	public void ouvrirCompte()
-	{	
-		
-	}
-	
-	public void fermerCompte()
-	{	
-		
-	}
-
 	public void retirerArgent(Double montant, Compte cpte)
 	{
 		successor.retirerArgent(montant, cpte);

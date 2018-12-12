@@ -11,10 +11,12 @@ public abstract class Carte
 		setAccount(account);
 	}
 
-	public Compte getAccount() {
+	public Compte getAccount() 
+	{
 		return account;
 	}
-	public void setAccount(Compte account) {
+	public void setAccount(Compte account)
+	{
 		this.account = account;
 	}
 
