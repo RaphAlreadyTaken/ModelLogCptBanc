@@ -3,12 +3,9 @@ package cptBanc;
 public class StatePaiementDemande extends StatePaiement 
 {
 	@Override
-	public void makePayment(Paiement pmnt)
-	{
-		double newSolde = pmnt.getCpte().getSolde() - pmnt.getMontant();
-
-		//On vérifie que le paiement est faisable en fonction du découvert autorisé
-		if(newSolde > 0 - pmnt.getCpte().getDecouvertAutorise())
+	public void makePayment(Paiement pmnt, Carte cartePaiement)
+	{		
+		if(cartePaiement.modalitePaiement(pmnt))
 		{
 			pmnt.setState(new StatePaiementAccepte());
 		}
@@ -16,9 +13,7 @@ public class StatePaiementDemande extends StatePaiement
 		{
 			pmnt.setState(new StatePaiementRefuse());
 		}
-
-		pmnt.getState().makePayment(pmnt); //Faire le paiement avec le nouvel état
 				
+		pmnt.getState().makePayment(pmnt, cartePaiement); //Faire le paiement avec le nouvel état			
 	}
-
 }

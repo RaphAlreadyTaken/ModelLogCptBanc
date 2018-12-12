@@ -3,8 +3,10 @@ package cptBanc;
 public class StatePaiementAccepte extends StatePaiement
 {
 	@Override
-	public void makePayment(Paiement pmnt)
+	public void makePayment(Paiement pmnt, Carte cartePaiement)
 	{		
-		pmnt.getCpte().getCartePaiement().debiterCompte(pmnt);
+		cartePaiement.getAccount().effectuerPaiement(pmnt);
 	}
+	
+	//appeler methode executer paiement
 }

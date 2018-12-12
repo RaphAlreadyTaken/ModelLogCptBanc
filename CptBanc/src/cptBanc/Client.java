@@ -91,7 +91,9 @@ public abstract class Client
 	
 	public void effectuerPaiement(Compte cpte, Pays country, Double montant)
 	{
-		Paiement pmnt = new Paiement(montant, country, cpte);
-		pmnt.getState().makePayment(pmnt);
+		montant = cpte.getCartePaiement().getTypeReseau().getCout() * montant;
+		
+		Paiement pmnt = new Paiement(montant, country);
+		pmnt.getState().makePayment(pmnt, cpte.getCartePaiement());
 	}
 }
