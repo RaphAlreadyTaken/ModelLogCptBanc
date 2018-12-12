@@ -4,6 +4,7 @@ public abstract class Reseau
 {
 	protected double cout;
 	private double tauxRembours;
+	private ObserverReseau obsR;
 	
 	public double getCout() 
 	{
@@ -12,14 +13,22 @@ public abstract class Reseau
 	public void setCout(double cout) 
 	{
 		this.cout = cout;
+		notifyObserver();
 	}
 	
 	public double getTauxRembours() 
 	{
 		return tauxRembours;
 	}
+	
 	public void setTauxRembours(double tauxRembours) 
 	{
 		this.tauxRembours = tauxRembours;
+		notifyObserver();
+	}
+	
+	public void notifyObserver()
+	{
+		obsR.update();
 	}
 }

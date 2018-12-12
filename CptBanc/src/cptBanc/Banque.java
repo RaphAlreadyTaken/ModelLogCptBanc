@@ -9,6 +9,7 @@ public class Banque
 	private String siret;
 	private ArrayList<Client> clients;
 	private Compte baseAccount;
+	private ObserverBanque obsB;
 	
 	public Banque(String nm, String ad, String sir, ArrayList<Client> clts)
 	{
@@ -41,6 +42,7 @@ public class Banque
 	public void setNom(String nom)
 	{
 		this.nom = nom;
+		notifyObserver();
 	}
 
 	public String getAdresse()
@@ -51,6 +53,7 @@ public class Banque
 	public void setAdresse(String adresse)
 	{
 		this.adresse = adresse;
+		notifyObserver();
 	}
 
 	public String getSiret()
@@ -61,6 +64,7 @@ public class Banque
 	public void setSiret(String siret)
 	{
 		this.siret = siret;
+		notifyObserver();
 	}
 
 	public ArrayList<Client> getClients()
@@ -71,5 +75,10 @@ public class Banque
 	public void setClients(ArrayList<Client> clients)
 	{
 		this.clients = clients;
+	}
+
+	public void notifyObserver()
+	{
+		obsB.update();
 	}
 }

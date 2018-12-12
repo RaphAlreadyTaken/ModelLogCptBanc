@@ -3,6 +3,7 @@ package cptBanc;
 public abstract class Carte 
 {
 	protected Reseau typeReseau;
+	protected ObserverCarte obsC;
 	
 	public Carte(Reseau typeReseau)
 	{
@@ -16,4 +17,8 @@ public abstract class Carte
 
 	public abstract void debiterCompte(Paiement pmnt);
 	
+	public void notifyObserver()
+	{
+		obsC.update();
+	}
 }
