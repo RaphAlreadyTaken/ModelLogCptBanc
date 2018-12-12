@@ -96,4 +96,9 @@ public abstract class Client
 		Paiement pmnt = new Paiement(montant, country);
 		pmnt.getState().makePayment(pmnt, cpte.getCartePaiement());
 	}
+	
+	public double consulterSolde(Compte cpte)
+	{
+		return cpte.getSolde();
+	}
 }

@@ -55,9 +55,4 @@ public class ClientPhysique extends Client
 	{
 		successor.retirerArgent(montant, cpte);
 	}
-	
-	public void consulterSolde(Compte cpte)
-	{
-		
-	}
 }

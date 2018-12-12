@@ -2,11 +2,24 @@ package cptBanc;
 
 public class FactoryClientMoral extends FactoryClient 
 {
+	private static FactoryClientMoral instance = null;
 
-	@Override
-	Client createClient(String nm, String ad, String ml, String tl) 
+	private FactoryClientMoral()
+	{		
+	}
+	
+	public static FactoryClientMoral getInstance()
 	{
-		return null; //new ClientMoral(nm, ad, ml, tl);
+		if(instance == null)
+		{
+			instance = new FactoryClientMoral();
+		}
+		return instance;
+	}
+	
+	Client createClient(String nm, String ad, String ml, String tl, String siret, ClientPhysique grt) 
+	{
+		return new ClientMoral(nm, ad, ml, tl, siret, grt);
 	}
 
 }

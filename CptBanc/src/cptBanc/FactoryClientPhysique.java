@@ -1,11 +1,27 @@
 package cptBanc;
 
+import java.time.LocalDate;
+
 public class FactoryClientPhysique extends FactoryClient 
 {
-	@Override
-	Client createClient(String nm, String ad, String ml, String tl) 
+	private static FactoryClientPhysique instance = null;
+
+	private FactoryClientPhysique()
 	{		
-		return null; //new ClientPhysique(nm, ad, ml, tl);
+	}
+	
+	public static FactoryClientPhysique getInstance()
+	{
+		if(instance == null)
+		{
+			instance = new FactoryClientPhysique();
+		}
+		return instance;
+	}
+
+	Client createClient(String nm, String ad, String ml, String tl, ClientPhysiqueAdulte tut, LocalDate dateNaissance) 
+	{		
+		return new ClientPhysique(nm, ad, ml, tl, tut, dateNaissance);
 	}
 
 }

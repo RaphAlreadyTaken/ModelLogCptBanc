@@ -11,7 +11,7 @@ public class ClientMoral extends Client
 		setGarant(grt);
 		setSiret(siret);
 	}
-	
+
 	public ClientPhysique getGarant()
 	{
 		return garant;
@@ -42,18 +42,16 @@ public class ClientMoral extends Client
 		
 	}
 	
-	public void deposerArgent(Double montant, Compte cpte)
-	{
-			
-	}
 	
 	public void retirerArgent(Double montant, Compte cpte)
 	{	
-		
-	}
-	
-	public void consulterSolde(Compte cpte)
-	{
-		
+		if(cpte.retirerArgent(new Retrait(montant)))
+		{
+			this.etat = montant + "€ ont étés retirés du compte."; 
+		}
+		else
+		{
+			this.etat = "Impossible de retirer cette somme: decouvert maximum atteint."; 
+		}
 	}
 }
