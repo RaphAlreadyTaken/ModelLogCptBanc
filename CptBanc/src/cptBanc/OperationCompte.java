@@ -18,4 +18,7 @@ public abstract class OperationCompte
 	{
 		this.montant = montant;
 	}
+	
+	public abstract double annulerOperation(double solde);
+		
 }

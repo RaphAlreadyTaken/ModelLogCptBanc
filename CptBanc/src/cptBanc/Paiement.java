@@ -29,4 +29,18 @@ public class Paiement extends OperationCompte
 	{
 		this.state = state;
 	}
+	
+	@Override
+	public double annulerOperation(double solde)
+	{
+		if(getState().getClass().getSimpleName() == "StatePaiementEnCours")
+		{
+			return solde;
+		}
+		else
+		{
+			double nouveauSolde = solde + montant;
+			return nouveauSolde;
+		}
+	}
 }
