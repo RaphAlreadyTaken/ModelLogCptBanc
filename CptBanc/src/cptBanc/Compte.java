@@ -89,6 +89,7 @@ public class Compte
 	{
 		ajouterOperation(op);
 		this.solde += op.getMontant();
+		ajouterSauvegarde();
 	}
 	
 	public Boolean retirerArgent(OperationCompte op)
@@ -99,6 +100,7 @@ public class Compte
 		{
 			ajouterOperation(op);
 			this.solde -= op.getMontant();
+			ajouterSauvegarde();
 			return true;
 		}
 		return false;
@@ -107,6 +109,7 @@ public class Compte
 	public void effectuerPaiement(Paiement pmnt)
 	{
 		this.getCartePaiement().debiterCompte(pmnt);
+		ajouterSauvegarde();
 	}
 	
 	public void setCartePaiement(Carte cartePaiement) 
