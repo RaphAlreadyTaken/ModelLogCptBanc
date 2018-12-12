@@ -6,9 +6,10 @@ public class Test
 {
 	public static void main(String[] args)
 	{
-		Banque bq = new Banque("BNP", "somewhere", "154984354", null);
+		Banque bq = new Banque();
 		Observer obsB = new ObserverBanque(bq);
 		
-		
+		bq.setAdresse("test");
+		bq.setNom("nouveau nom de banque");
 	}
 }

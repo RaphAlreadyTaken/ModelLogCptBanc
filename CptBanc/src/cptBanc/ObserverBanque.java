@@ -14,5 +14,6 @@ public class ObserverBanque extends Observer
 		System.out.println("Nom: " + bk.getNom());
 		System.out.println("Adresse: " + bk.getAdresse());
 		System.out.println("Siret: " + bk.getSiret());
+		System.out.println("Nombre de clients: " + bk.getClients().size());
 	}
 }

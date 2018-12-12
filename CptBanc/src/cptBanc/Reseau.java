@@ -4,7 +4,7 @@ public abstract class Reseau
 {
 	protected double cout;
 	private double tauxRembours;
-	private ObserverReseau obsR;
+	private ObserverReseau obsR = new ObserverReseau(this);
 	
 	public double getCout() 
 	{

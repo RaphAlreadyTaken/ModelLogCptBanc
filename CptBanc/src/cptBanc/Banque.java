@@ -10,7 +10,15 @@ public class Banque
 	private String siret;
 	private ArrayList<Client> clients;
 	private Compte baseAccount;
-	private ObserverBanque obsB;
+	private ObserverBanque obsB = new ObserverBanque(this);
+	
+	public Banque()
+	{
+		nom = "";
+		adresse = "";
+		siret = "";
+		clients = new ArrayList<Client>();
+	}
 	
 	public Banque(String nm, String ad, String sir, ArrayList<Client> clts)
 	{
@@ -39,6 +47,7 @@ public class Banque
 	{
 		return nom;
 	}
+	
 	public void setNom(String nom)
 	{
 		this.nom = nom;

@@ -12,9 +12,17 @@ public abstract class Client
 	protected String tel;
 	protected int clientID;
 	protected ArrayList<Compte> arrayComptes;
-	protected ObserverClient obsC;
+	protected ObserverClient obsC = new ObserverClient(this);
 
 	protected String etat;
+	
+	public Client()
+	{
+		nom = "";
+		adresse = "";
+		mail = "";
+		tel = "";
+	}
 	
 	public Client(String nm, String ad, String ml, String tl)
 	{

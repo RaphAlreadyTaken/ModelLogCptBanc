@@ -15,5 +15,6 @@ public class ObserverClient extends Observer
 		System.out.println("Adresse: " + clt.getAdresse());
 		System.out.println("Mail: " + clt.getMail());
 		System.out.println("Tel: " + clt.getTel());
+		System.out.println("Nombre de comptes: " + clt.getArrayComptes().size());
 	}
 }

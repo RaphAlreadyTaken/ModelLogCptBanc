@@ -3,8 +3,8 @@ package cptBanc;
 public abstract class Carte 
 {
 	protected Reseau typeReseau;
-	protected ObserverCarte obsC;
 	protected Compte account;
+	protected ObserverCarte obsC = new ObserverCarte(this);
 	
 	public Carte(Reseau typeReseau, Compte account)
 	{
@@ -12,11 +12,15 @@ public abstract class Carte
 		setAccount(account);
 	}
 
-	public Compte getAccount() {
+	public Compte getAccount()
+	{
 		return account;
 	}
-	public void setAccount(Compte account) {
+	
+	public void setAccount(Compte account)
+	{
 		this.account = account;
+		notifyObserver();
 	}
 
 	public Reseau getTypeReseau() 

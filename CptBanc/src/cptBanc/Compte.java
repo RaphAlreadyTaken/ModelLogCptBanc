@@ -11,10 +11,10 @@ public class Compte
 	private double montantRetraitMax;
 	private double decouvertAutorise;
 	private Carte cartePaiement;
-	private ObserverCompte obsC;
+	private ObserverCompte obsC = new ObserverCompte(this);
 	
 	ArrayList<OperationCompte> operationArray;
-
+	
 	public Compte()
 	{
 		numCompte = cptCompte;
