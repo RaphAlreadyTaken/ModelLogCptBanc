@@ -21,7 +21,7 @@ public class Compte
 		solde = 0;
 		montantRetraitMax = 200;
 		decouvertAutorise = 100;
-		setCartePaiement(null);
+		cartePaiement = null;
 		
 		operationArray = new ArrayList<OperationCompte>();
 		cptCompte++;
@@ -83,7 +83,7 @@ public class Compte
 	public void ajouterArgent(OperationCompte op)
 	{
 		ajouterOperation(op);
-		this.solde += op.getMontant();
+		setSolde(this.solde + op.getMontant());
 	}
 	
 	public Boolean retirerArgent(OperationCompte op)
@@ -93,7 +93,7 @@ public class Compte
 		if(newSolde > 0 - this.decouvertAutorise)
 		{
 			ajouterOperation(op);
-			this.solde -= op.getMontant();
+			setSolde(this.solde - op.getMontant());
 			return true;
 		}
 		return false;
@@ -128,7 +128,7 @@ public class Compte
 			{
 				if((((Paiement) op).getState().getClass().getSimpleName()) == "StatePaiementEnCours")
 				{
-					this.solde -= op.getMontant();
+					setSolde(this.solde - op.getMontant());
 					((Paiement) op).setState(new StatePaiementTermine());
 				}
 			}

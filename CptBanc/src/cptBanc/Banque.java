@@ -26,7 +26,7 @@ public class Banque
 		adresse = ad;
 		siret = sir;
 		baseAccount = new Compte();
-		setClients(clts);
+		clients = clts;
 	}
 	
 	public void creerCompte(Client clt)
@@ -38,7 +38,7 @@ public class Banque
 	{
 		if(clt.getArrayComptes().remove(cpte))
 		{
-			return true;		
+			return true;
 		}
 		return false;
 	}
@@ -78,6 +78,7 @@ public class Banque
 	{
 		return clients;
 	}
+	
 	public void setClients(ArrayList<Client> clients)
 	{
 		this.clients = clients;
@@ -88,16 +89,16 @@ public class Banque
 		obsB.update();
 	}
 	
-	Client creerClientMoral(String nm, String ad, String ml, String tl, String siret, ClientPhysique grt)
+	ClientMoral creerClientMoral(String nm, String ad, String ml, String tl, String siret, ClientPhysique grt)
 	{
-		Client clt = FactoryClientMoral.getInstance().createClient(nm, ad, ml, tl, siret, grt);
+		ClientMoral clt = FactoryClientMoral.getInstance().createClient(nm, ad, ml, tl, siret, grt);
 		clients.add(clt);		
 		return clt;
 	}	
 	
-	Client creerClientPhysique(String nm, String ad, String ml, String tl, ClientPhysiqueAdulte tut, LocalDate dateNaissance)
+	ClientPhysique creerClientPhysique(String nm, String ad, String ml, String tl, ClientPhysiqueAdulte tut, LocalDate dateNaissance)
 	{
-		Client clt = FactoryClientPhysique.getInstance().createClient(nm, ad, ml, tl, tut, dateNaissance);
+		ClientPhysique clt = FactoryClientPhysique.getInstance().createClient(nm, ad, ml, tl, tut, dateNaissance);
 		clients.add(clt);
 		return clt;
 	}

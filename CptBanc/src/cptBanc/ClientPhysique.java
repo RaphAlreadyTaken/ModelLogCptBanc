@@ -11,14 +11,18 @@ public class ClientPhysique extends Client
 	public ClientPhysique(String nm, String ad, String ml, String tl, ClientPhysiqueAdulte tut, LocalDate dateNaissance)
 	{
 		super(nm, ad, ml, tl);
-		setTuteur(tut);
-		setDateNaissance(dateNaissance);
-		successor = new ClientPhysiqueEnfant(nom, adresse, mail, tel, tuteur, dateNaissance);
+		this.tuteur = tut;
+		this.dateNaissance = dateNaissance;
 	}
 	
 	ClientPhysique getSuccessor()
 	{
 		return this.successor;
+	}
+	
+	public void setSuccessor(ClientPhysiqueEnfant clpe)
+	{
+		this.successor = clpe;
 	}
 	
 	public ClientPhysiqueAdulte getTuteur()

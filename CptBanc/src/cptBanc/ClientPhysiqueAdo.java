@@ -10,6 +10,11 @@ public class ClientPhysiqueAdo extends ClientPhysique
 		successor = new ClientPhysiqueAdulte(nom, adresse, mail, tel, tuteur, dateNaissance);
 	}
 	
+	public void setSuccessor(ClientPhysiqueAdulte clpadu)
+	{
+		
+	}
+	
 	public void retirerArgent(Double montant, Compte cpte)
 	{
 		LocalDate now = LocalDate.now();		
@@ -30,12 +35,12 @@ public class ClientPhysiqueAdo extends ClientPhysique
 			}
 			else
 			{
-				this.etat = "Impossible de retirer cette somme: somme supèrieure au retrait maximum."; 
+				this.etat = "Impossible de retirer cette somme: somme supérieure au retrait maximum."; 
 			}
 		}
 		else
 		{
-			successor.deposerArgent(montant, cpte);
+			successor.retirerArgent(montant, cpte);
 		}			
 	}
 

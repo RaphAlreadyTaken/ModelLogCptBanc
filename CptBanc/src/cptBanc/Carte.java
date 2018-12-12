@@ -6,10 +6,16 @@ public abstract class Carte
 	protected Compte account;
 	protected ObserverCarte obsC = new ObserverCarte(this);
 	
-	public Carte(Reseau typeReseau, Compte account)
+	public Carte()
+	{
+		this.typeReseau = new ReseauMasterCard();
+		
+	}
+	
+	public Carte(Reseau typeReseau, Compte accnt)
 	{
 		this.typeReseau = typeReseau;
-		setAccount(account);
+		this.account = accnt;
 	}
 
 	public Compte getAccount()

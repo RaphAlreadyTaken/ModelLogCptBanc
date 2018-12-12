@@ -17,7 +17,7 @@ public class FactoryClientMoral extends FactoryClient
 		return instance;
 	}
 	
-	Client createClient(String nm, String ad, String ml, String tl, String siret, ClientPhysique grt) 
+	ClientMoral createClient(String nm, String ad, String ml, String tl, String siret, ClientPhysique grt) 
 	{
 		return new ClientMoral(nm, ad, ml, tl, siret, grt);
 	}

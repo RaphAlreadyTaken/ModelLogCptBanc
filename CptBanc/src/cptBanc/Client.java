@@ -49,6 +49,7 @@ public abstract class Client
 	{
 		return adresse;
 	}
+	
 	public void setAdresse(String adresse)
 	{
 		this.adresse = adresse;

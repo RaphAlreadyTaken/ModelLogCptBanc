@@ -7,7 +7,11 @@ public class ClientPhysiqueEnfant extends ClientPhysique
 	public ClientPhysiqueEnfant(String nm, String ad, String ml, String tl, ClientPhysiqueAdulte tut, LocalDate dateNaissance) 
 	{
 		super(nm, ad, ml, tl, tut, dateNaissance);
-		successor = new ClientPhysiqueAdo(nom, adresse, mail, tel, tuteur, dateNaissance);
+	}
+	
+	public void setSuccessor(ClientPhysiqueAdo clpado)
+	{
+		this.successor = clpado;
 	}
 	
 	public void retirerArgent(Double montant, Compte cpte)
@@ -21,7 +25,7 @@ public class ClientPhysiqueEnfant extends ClientPhysique
 		}
 		else
 		{
-			successor.deposerArgent(montant, cpte);
+			successor.retirerArgent(montant, cpte);
 		}			
 	
 	}
