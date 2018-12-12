@@ -1,30 +1,12 @@
 package cptBanc;
 
 public class CarteDebit extends Carte
-{
-	private double plafond;
-	
-	public CarteDebit(Reseau typeReseau, Compte account, double plafond) 
-	{
-		super(typeReseau, account);		
-		this.setPlafond(plafond);
-	}
-	
+{	
 	public CarteDebit(Reseau typeReseau, Compte account) 
 	{
-		super(typeReseau, account);		
-		this.setPlafond(200);
+		super(typeReseau, account);			
 	}
 
-	public double getPlafond() 
-	{
-		return plafond;
-	}
-
-	public void setPlafond(double plafond)
-	{
-		this.plafond = plafond;
-	}
 
 	@Override
 	public Boolean modalitePaiement(Paiement pmnt) 
