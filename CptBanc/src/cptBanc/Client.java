@@ -12,6 +12,7 @@ public abstract class Client
 	protected String tel;
 	protected int clientID;
 	protected ArrayList<Compte> arrayComptes;
+	protected ObserverClient obsC;
 
 	protected String etat;
 	
@@ -33,6 +34,7 @@ public abstract class Client
 	public void setNom(String nom)
 	{
 		this.nom = nom;
+		notifyObserver();
 	}
 
 	public String getAdresse()
@@ -42,6 +44,7 @@ public abstract class Client
 	public void setAdresse(String adresse)
 	{
 		this.adresse = adresse;
+		notifyObserver();
 	}
 
 	public String getMail()
@@ -51,6 +54,7 @@ public abstract class Client
 	public void setMail(String mail)
 	{
 		this.mail = mail;
+		notifyObserver();
 	}
 
 	public String getTel()
@@ -60,6 +64,7 @@ public abstract class Client
 	public void setTel(String tel)
 	{
 		this.tel = tel;
+		notifyObserver();
 	}
 	
 	public int getClientID()
@@ -100,5 +105,10 @@ public abstract class Client
 	public double consulterSolde(Compte cpte)
 	{
 		return cpte.getSolde();
+	}
+	
+	public void notifyObserver()
+	{
+		obsC.update();
 	}
 }

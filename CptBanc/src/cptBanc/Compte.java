@@ -11,6 +11,7 @@ public class Compte
 	private double montantRetraitMax;
 	private double decouvertAutorise;
 	private Carte cartePaiement;
+	private ObserverCompte obsC;
 	
 	ArrayList<OperationCompte> operationArray;
 
@@ -45,6 +46,7 @@ public class Compte
 	public void setSolde(double solde) 
 	{
 		this.solde = solde;
+		notifyObserver();
 	}
 
 	public double getMontantRetraitMax() 
@@ -54,6 +56,7 @@ public class Compte
 	public void setMontantRetraitMax(double montantRetraitMax) 
 	{
 		this.montantRetraitMax = montantRetraitMax;
+		notifyObserver();
 	}
 
 	public double getDecouvertAutorise() 
@@ -63,17 +66,14 @@ public class Compte
 	public void setDecouvertAutorise(double decouvertAutorise)
 	{
 		this.decouvertAutorise = decouvertAutorise;
+		notifyObserver();
 	}
 	
 	public Carte getCartePaiement() 
 	{
 		return cartePaiement;
 	}
-	public void setCartePaiement(Carte cartePaiement) 
-	{
-		this.cartePaiement = cartePaiement;
-	}
-		
+	
 	public ArrayList<OperationCompte> getOperationArray() 
 	{
 		return operationArray;
@@ -102,6 +102,17 @@ public class Compte
 	public void effectuerPaiement(Paiement pmnt)
 	{
 		this.getCartePaiement().debiterCompte(pmnt);
+	}
+	
+	public void setCartePaiement(Carte cartePaiement) 
+	{
+		this.cartePaiement = cartePaiement;
+		notifyObserver();
+	}
+	
+	public void notifyObserver()
+	{
+		obsC.update();
 	}
 	
 	public void ajouterOperation(OperationCompte op)
