@@ -77,6 +77,7 @@ public class Banque
 	public void notifyObserver()
 	{
 		obsB.update();
+	}
 	
 	Client creerClientMoral(String nm, String ad, String ml, String tl, String siret, ClientPhysique grt)
 	{

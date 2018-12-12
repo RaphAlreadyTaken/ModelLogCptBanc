@@ -73,11 +73,7 @@ public class Compte
 	{
 		return cartePaiement;
 	}
-	public void setCartePaiement(Carte cartePaiement) 
-	{
-		this.cartePaiement = cartePaiement;
-	}
-		
+	
 	public ArrayList<OperationCompte> getOperationArray() 
 	{
 		return operationArray;
@@ -117,6 +113,8 @@ public class Compte
 	public void notifyObserver()
 	{
 		obsC.update();
+	}
+	
 	public void ajouterOperation(OperationCompte op)
 	{
 		operationArray.add(op);
